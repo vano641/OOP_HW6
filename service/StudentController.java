@@ -15,22 +15,30 @@ public class StudentController implements UserController<Student>{
 
     private StudentGroup studentGroup = new StudentGroup(); // экземпляр ГруппыСтудентов
 
+    private List<Student> studentList; // экземпляр Списка тудентов
+
     private RemoveStudentByFIOService RSBFIOS = new RemoveStudentByFIOService();
 
     private final StudentView studentView = new StudentView(); // создадим СтудентВью
+
+// инициализируем список студентов:
+    public StudentController(StudentGroup studentGroup) {
+        this.studentList = studentGroup.getStudentList();
+    }
+
 
     public void removeStudentByFIO(String firstName, String lastName, String middleName){
         RSBFIOS.removeStudentByFIO(firstName, lastName, middleName); // вызываем метод передавая в него все параметры
     }
 
      public List<Student> getSortedStudentList(){
-        List<Student> studentList = IdSS.getSortedStudentList(studentGroup);
+        List<Student> studentList = IdSS.getSort(studentGroup);
         studentView.sendOnConsole(studentList);
         return studentList;
      }
 
     public List<Student> getSortedStudentByFIO(){
-        List<Student> studentList = FIOSS.getSortedStydentByFIO(studentGroup);
+        List<Student> studentList = FIOSS.getSort(studentGroup);
         studentView.sendOnConsole(studentList);
         return studentList;
     }
