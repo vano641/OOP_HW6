@@ -15,7 +15,7 @@ public class StudentGroup implements Iterable<Student>{
     
         public List<Student> initStudents(){
         List<Student> StL = new ArrayList<>();
-        StL.add(new Student(1, "Иван", "Мысовский", "Андреевич"));
+        StL.add(new Student(5, "Иван", "Мысовский", "Андреевич"));
         StL.add(new Student(2, "Кристина", "Мысовская", "Вячеславовна"));
         StL.add(new Student(3, "Артем", "Мысовский", "Иванович"));
         return StL;
